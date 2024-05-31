@@ -1,5 +1,6 @@
 package com.cydeo.controller;
 
+import com.cydeo.Repository.UserRepository;
 import com.cydeo.dto.UserDTO;
 import com.cydeo.service.RoleService;
 import com.cydeo.service.UserService;
@@ -16,59 +17,62 @@ public class UserController {
 
     private final RoleService roleService;
     private final UserService userService;
+    private final UserRepository userRepository;
 
-    public UserController(RoleService roleService, UserService userService) {
+    public UserController(RoleService roleService, UserService userService, UserRepository userRepository) {
         this.roleService = roleService;
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/create")
-    public String createUser(Model model){
+    public String createUser(Model model) {
 
         model.addAttribute("user", new UserDTO());
-        model.addAttribute("roles", roleService.findAll());
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("roles", roleService.listAllRoles());
+        model.addAttribute("users", userService.listAllUsers());
 
         return "/user/create";
 
     }
 
     @PostMapping("/create")
-    public String insertUser(@Valid @ModelAttribute("user") UserDTO user, BindingResult bindingResult, Model model) {
+    public String insertUser(@ModelAttribute("user") UserDTO user, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
 
-            model.addAttribute("roles", roleService.findAll());
-            model.addAttribute("users", userService.findAll());
+            model.addAttribute("roles", roleService.listAllRoles());
+            model.addAttribute("users", userService.listAllUsers());
 
             return "/user/create";
 
         }
 
-        userService.save(user);
+        userService.Save(user);
 
         return "redirect:/user/create";
 
     }
 
+
     @GetMapping("/update/{username}")
     public String editUser(@PathVariable("username") String username, Model model) {
 
-        model.addAttribute("user", userService.findById(username));
-        model.addAttribute("roles", roleService.findAll());
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("user", userService.findByUserName(username));
+        model.addAttribute("roles", roleService.listAllRoles());
+        model.addAttribute("users", userService.listAllUsers());
 
         return "/user/update";
 
     }
 
     @PostMapping("/update")
-    public String updateUser(@Valid @ModelAttribute("user") UserDTO user, BindingResult bindingResult, Model model) {
+    public String updateUser( @ModelAttribute("user") UserDTO user, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
 
-            model.addAttribute("roles", roleService.findAll());
-            model.addAttribute("users", userService.findAll());
+            model.addAttribute("roles", roleService.listAllRoles());
+            model.addAttribute("users", userService.listAllUsers());
 
             return "/user/update";
 
@@ -82,7 +86,8 @@ public class UserController {
 
     @GetMapping("/delete/{username}")
     public String deleteUser(@PathVariable("username") String username) {
-        userService.deleteById(username);
+        // userService.deleteByUserName(username);
+        userService.delete(username);
         return "redirect:/user/create";
     }
 
