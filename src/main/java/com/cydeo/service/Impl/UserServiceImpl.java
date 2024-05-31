@@ -1,7 +1,9 @@
 package com.cydeo.service.Impl;
 
 import com.cydeo.Repository.UserRepository;
+import com.cydeo.dto.RoleDTO;
 import com.cydeo.dto.UserDTO;
+import com.cydeo.entity.Role;
 import com.cydeo.entity.User;
 import com.cydeo.mapper.RoleMapper;
 import com.cydeo.mapper.UserMapper;
@@ -63,5 +65,11 @@ public class UserServiceImpl implements UserService {
     User user=userRepository.findUserByUserName(userName);
     user.setIsDeleted(true);
     userRepository.save(user);
+    }
+
+    @Override
+    public List<UserDTO> listAllByRole(String role) {
+        List<User>users=userRepository.findByRoleDescriptionIgnoreCase(role);
+        return users.stream().map(userMapper::convertToDTO).collect(Collectors.toList());
     }
 }
