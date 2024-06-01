@@ -13,5 +13,6 @@ VALUES
 INSERT INTO users (insert_date_time,insert_user_id,is_deleted,last_update_date_time,last_update_user_id,enabled,
 first_name,gender,last_name,user_name,role_id)
 VALUES
-    ('2024-05-31 12:00:00', 1, false, '2024-05-31 12:00:00', 1, true, 'John', 'MALE', 'Doe', 'jdoe@example.com', 1);
+    ('2024-05-31 12:00:00', 1, false, '2024-05-31 12:00:00', 1, true, 'John', 'MALE', 'Doe', 'jdoe@example.com', 1),
+    ('2024-05-31 12:00:00', 2, false, '2024-05-31 12:00:00', 2, true, 'John', 'MALE', 'Cena', 'cena@example.com', 2);
 

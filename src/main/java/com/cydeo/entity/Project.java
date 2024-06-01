@@ -34,5 +34,5 @@ public class Project extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="manager_id")
-    private User AssignmentManager;
+    private User assignedManager;
 }

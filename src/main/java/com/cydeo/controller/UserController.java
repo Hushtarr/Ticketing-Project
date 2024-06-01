@@ -48,7 +48,7 @@ public class UserController {
 
         }
 
-        userService.Save(user);
+        userService.save(user);
 
         return "redirect:/user/create";
 

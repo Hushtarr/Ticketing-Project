@@ -2,9 +2,10 @@ package com.cydeo.service.Impl;
 
 import com.cydeo.Repository.ProjectRepository;
 import com.cydeo.dto.ProjectDTO;
+import com.cydeo.entity.Project;
+import com.cydeo.enums.Status;
 import com.cydeo.mapper.ProjectMapper;
 import com.cydeo.service.ProjectService;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectDTO findByProjectCode(String projectCode) {
-        return null;
+        return projectMapper.convertToDTO(projectRepository.findByProjectCode(projectCode));
     }
 
     @Override
@@ -32,16 +33,41 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void save(ProjectDTO dto) {
-
+        dto.setProjectStatus(Status.OPEN);
+        Project project=projectMapper.convertToEntity(dto);
+        projectRepository.save(project);
     }
 
     @Override
-    public void update(ProjectDTO dto) {
-
+    public ProjectDTO update(ProjectDTO dto) {
+    Project projectInDB=projectRepository.findByProjectCode(dto.getProjectCode());
+    Project projectFromView=projectMapper.convertToEntity(dto);
+        projectFromView.setId(projectInDB.getId());
+        projectFromView.setProjectStatus(projectInDB.getProjectStatus());
+        projectRepository.save(projectFromView);
+        return findByProjectCode(dto.getProjectCode());
     }
 
     @Override
     public void delete(String projectCode) {
+        Project project =projectRepository.findByProjectCode(projectCode);
+        project.setIsDeleted(true);
+        projectRepository.save(project);
+    }
+
+    @Override
+    public void deleteByProjectCode(String projectCode) {
+         //projectRepository.deleteByProjectCode(projectCode);
+        //this will delete the data from the database
+    }
+
+    @Override
+    public void complete(String projectCode) {
+        Project project= projectRepository.findByProjectCode(projectCode);
+        project.setProjectStatus(Status.COMPLETE);
+        projectRepository.save(project);
 
     }
+
+
 }
