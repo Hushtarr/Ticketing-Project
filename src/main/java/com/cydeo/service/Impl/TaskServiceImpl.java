@@ -1,6 +1,6 @@
 package com.cydeo.service.Impl;
 
-import com.cydeo.Repository.TaskRepository;
+import com.cydeo.repository.TaskRepository;
 import com.cydeo.dto.TaskDTO;
 import com.cydeo.entity.Task;
 import com.cydeo.enums.Status;
@@ -32,17 +32,24 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void delete(Long id) {
-        Optional<Task>foundtask =taskRepository.findById(id);
-        if(foundtask.isPresent()){
-            foundtask.get().setIsDeleted(true);
-            taskRepository.save(foundtask.get());
+        Optional<Task>foundTask =taskRepository.findById(id);
+        //findById came from JpaRepo so we need to add Optional to fit his functionality
+        if(foundTask.isPresent()){
+            foundTask.get().setIsDeleted(true);
+            taskRepository.save(foundTask.get());
         }
 
     }
 
     @Override
     public void update(TaskDTO dto) {
-
+    Optional<Task>task=taskRepository.findById(dto.getId());
+    Task convertedTask = taskMapper.convertToEntity(dto);
+    if (task.isPresent()){
+        convertedTask.setTaskStatus(task.get().getTaskStatus());
+        convertedTask.setAssignedDate(task.get().getAssignedDate());
+        taskRepository.save(convertedTask);
+    }
     }
 
     @Override
@@ -52,6 +59,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public TaskDTO findById(Long id) {
-        return null;
+        Optional<Task>foundTask = taskRepository.findById(id);
+        return foundTask.map(taskMapper::convertToDTO).orElse(null);
+
     }
 }

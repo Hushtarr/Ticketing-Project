@@ -1,8 +1,7 @@
 package com.cydeo.service.Impl;
 
-import com.cydeo.Repository.RoleRepository;
+import com.cydeo.repository.RoleRepository;
 import com.cydeo.dto.RoleDTO;
-import com.cydeo.entity.Role;
 import com.cydeo.mapper.RoleMapper;
 import com.cydeo.service.RoleService;
 import org.springframework.stereotype.Service;

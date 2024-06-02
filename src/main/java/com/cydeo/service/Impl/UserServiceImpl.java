@@ -1,15 +1,11 @@
 package com.cydeo.service.Impl;
 
-import com.cydeo.Repository.UserRepository;
-import com.cydeo.dto.RoleDTO;
+import com.cydeo.repository.UserRepository;
 import com.cydeo.dto.UserDTO;
-import com.cydeo.entity.Role;
 import com.cydeo.entity.User;
 import com.cydeo.mapper.RoleMapper;
 import com.cydeo.mapper.UserMapper;
 import com.cydeo.service.UserService;
-import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

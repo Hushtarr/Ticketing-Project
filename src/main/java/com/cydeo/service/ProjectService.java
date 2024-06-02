@@ -12,4 +12,5 @@ public interface ProjectService{
     void delete(String projectCode);
     void deleteByProjectCode(String projectCode);
     void complete(String projectCode);
+    List<ProjectDTO> listAllProjectDetails();
 }
