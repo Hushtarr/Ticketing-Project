@@ -15,4 +15,5 @@ public interface TaskService {
 
     int totalNonCompletedTasks(String projectCode);
     int totalCompletedTasks(String projectCode);
+
 }
