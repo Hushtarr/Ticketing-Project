@@ -76,7 +76,7 @@ public class ProjectController {
     public String editProject(@PathVariable("projectCode") String projectCode, Model model){
 
         model.addAttribute("project", projectService.findByProjectCode(projectCode));
-        model.addAttribute("managers", userService.listAllByRole("Manager"));
+        model.addAttribute("managers", userService.listAllByRole("manager"));
         model.addAttribute("projects", projectService.listAllProjects());
 
         return "/project/update";

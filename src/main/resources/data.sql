@@ -1,38 +1,42 @@
-INSERT INTO roles (
-    insert_date_time,
-    insert_user_id,
-    is_deleted,
-    last_update_date_time,
-    last_update_user_id,
-    description)
-VALUES
-      ('2024-05-31 12:00:00', 1, false, '2024-05-31 12:00:00', 1, 'Admin'),
-      ('2024-05-31 12:05:00', 1, false, '2024-05-31 12:05:00', 2, 'Manager'),
-      ('2024-05-31 12:10:00', 1, false, '2024-05-31 12:10:00', 3, 'Employee');
 
-INSERT INTO users (insert_date_time,insert_user_id,is_deleted,last_update_date_time,last_update_user_id,enabled,
-first_name,gender,last_name,user_name,role_id)
-VALUES
-    ('2024-05-31 12:00:00', 1, false, '2024-05-31 12:00:00', 1, true, 'Carl', 'MALE', 'Jhonson', 'jdoe@example.com', 1),
-    ('2024-05-31 12:00:00', 2, false, '2024-05-31 12:00:00', 2, true, 'Leonard', 'MALE', 'Owen', 'cena@example.com', 2),
-    ('2024-05-31 12:00:00', 3, false, '2024-05-31 12:00:00', 3, true, 'Vayne', 'MALE', 'Flynn', 'jdoe@example.com', 3),
-    ('2024-05-31 12:00:00', 6, false, '2024-05-31 12:00:00', 6, true, 'Emma', 'FEMALE', 'Wilson', 'emma@example.com', 3),
-    ('2024-05-31 12:00:00', 7, false, '2024-05-31 12:00:00', 7, true, 'David', 'MALE', 'Brown', 'david@example.com', 2),
-    ('2024-05-31 12:00:00', 8, false, '2024-05-31 12:00:00', 8, true, 'Olivia', 'FEMALE', 'Miller', 'olivia@example.com', 3),
-    ('2024-05-31 12:00:00', 9, false, '2024-05-31 12:00:00', 9, true, 'James', 'MALE', 'Taylor', 'james@example.com', 2),
-    ('2024-05-31 12:00:00', 10, false, '2024-05-31 12:00:00', 10, true, 'Isabella', 'FEMALE', 'Anderson', 'isabella@example.com', 3);
+INSERT INTO roles(insert_date_time, insert_user_id, is_deleted, last_update_date_time, last_update_user_id, description)
+VALUES ('2022-01-05 00:00:00', 1, false, '2022-01-05 00:00:00', 1, 'Admin'),
+       ('2022-01-05 00:00:00', 1, false, '2022-01-05 00:00:00', 1, 'Manager'),
+       ('2022-01-05 00:00:00', 1, false, '2022-01-05 00:00:00', 1, 'Employee');
 
 
+INSERT INTO users(insert_date_time, insert_user_id, is_deleted, last_update_date_time, last_update_user_id, enabled,
+                  first_name, last_name, user_name, gender, phone, role_id)
+VALUES ('2022-01-05 00:00:00', 1, false, '2022-01-05 00:00:00', 1, true, 'admin', 'admin', 'admin@admin.com', 'MALE', '0000000000', 1),
+       ('2022-01-05 00:00:00', 1, false, '2022-01-05 00:00:00', 1, true, 'Harold', 'Finch', 'harold@manager.com', 'MALE', '0123456789', 2),
+       ('2022-01-05 00:00:00', 1, false, '2022-01-05 00:00:00', 1, true, 'Samantha', 'Groves', 'samantha@manager.com', 'MALE', '9876543210', 2),
+       ('2022-01-05 00:00:00', 1, false, '2022-01-05 00:00:00', 1, true, 'John', 'Reese', 'john@employee.com', 'MALE', '7894561230', 3),
+       ('2022-01-05 00:00:00', 1, false, '2022-01-05 00:00:00', 1, true, 'Sameen', 'Shaw', 'sameen@employee.com', 'MALE', '0321654987', 3),
+       ('2022-01-05 00:00:00', 1, false, '2022-01-05 00:00:00', 1, true, 'Grace', 'Hendricks', 'grace@employee.com', 'MALE', '7410258963', 3),
+       ('2022-01-05 00:00:00', 1, false, '2022-01-05 00:00:00', 1, true, 'Lionel', 'Fusco', 'lionel@employee.com', 'MALE', '3698520147', 3);
 
 
-INSERT INTO projects (
-    insert_date_time, insert_user_id, is_deleted, last_update_date_time, last_update_user_id,
-    end_date, project_code, project_detail, project_name, project_status, start_date, manager_id
-) VALUES
-    ('2023-06-01 10:00:00', 2, false, '2023-06-02 11:00:00', 3, '2024-12-31', 'PRJ001', 'Development of APIs using Spring Boot.', 'Project One', 'OPEN', '2023-01-01', 5),
-    ('2023-06-02 12:00:00', 3, false, '2023-06-03 13:00:00', 2, '2024-11-30', 'PRJ002', 'Implementation of microservices architecture with Spring Cloud.', 'Project Two', 'IN_PROGRESS', '2023-02-01', 7),
-    ('2023-06-03 14:00:00', 2, false, '2023-06-04 15:00:00', 3, '2024-10-31', 'PRJ003', 'Spring Security integration for authentication and authorization.', 'Project Three', 'COMPLETE', '2023-03-01', 2),
-    ('2023-06-04 16:00:00', 3, false, '2023-06-05 17:00:00', 2, '2024-09-30', 'PRJ004', 'Database management with Spring Data JPA.', 'Project Four', 'OPEN', '2023-04-01', 5),
-    ('2023-06-05 18:00:00', 2, false, '2023-06-06 19:00:00', 3, '2024-08-31', 'PRJ005', 'Building reactive applications with Spring WebFlux.', 'Project Five', 'IN_PROGRESS', '2023-05-01', 7);
+INSERT INTO projects(insert_date_time, insert_user_id, is_deleted, last_update_date_time, last_update_user_id, project_code, project_name,
+                     project_detail, project_status, start_date, end_date, manager_id)
+VALUES ('2022-01-05 00:00:00', 2, false, '2022-01-05 00:00:00', 2, 'SP00', 'Spring Core', 'Spring Core Project', 'OPEN', '2022-01-05', '2022-06-12', 2),
+       ('2022-01-05 00:00:00', 2, false, '2022-01-05 00:00:00', 2, 'SP01', 'Spring Boot', 'Spring Boot Project', 'IN_PROGRESS', '2022-01-05', '2022-06-12', 2),
+       ('2022-01-05 00:00:00', 3, false, '2022-01-05 00:00:00', 3, 'SP02', 'Spring MVC', 'Spring MVC Project', 'IN_PROGRESS', '2022-01-05', '2022-06-12', 3),
+       ('2022-01-05 00:00:00', 3, false, '2022-01-05 00:00:00', 3, 'SP03', 'Spring Data', 'Spring Data Project', 'OPEN', '2022-01-05', '2022-06-12', 3);
 
-
+INSERT INTO tasks(insert_date_time, insert_user_id, is_deleted, last_update_date_time, last_update_user_id, task_subject, task_detail, task_status, assigned_date, project_id, assigned_employee_id)
+VALUES ('2022-01-05 00:00:00', 2, false, '2022-01-05 00:00:00', 2, 'Dependency Injection', 'Injecting dependencies', 'OPEN', '2022-01-05', 1, 4),
+       ('2022-01-05 00:00:00', 2, false, '2022-01-05 00:00:00', 2, '@SpringBootApplication', 'Adding @SpringBootApplication annotation', 'IN_PROGRESS', '2022-01-05', 1, 4),
+       ('2022-01-05 00:00:00', 2, false, '2022-01-05 00:00:00', 2, 'Controller', 'Creating controllers', 'COMPLETE', '2022-01-05', 1, 4),
+       ('2022-01-05 00:00:00', 2, false, '2022-01-05 00:00:00', 2, 'Entity', 'Creating entities', 'OPEN', '2022-01-05', 1, 4),
+       ('2022-01-05 00:00:00', 2, false, '2022-01-05 00:00:00', 2, 'Dependency Injection', 'Injecting dependencies', 'OPEN', '2022-01-05', 2, 5),
+       ('2022-01-05 00:00:00', 2, false, '2022-01-05 00:00:00', 2, '@SpringBootApplication', 'Adding @SpringBootApplication annotation', 'COMPLETE', '2022-01-05', 2, 5),
+       ('2022-01-05 00:00:00', 2, false, '2022-01-05 00:00:00', 2, 'Controller', 'Creating controllers', 'IN_PROGRESS', '2022-01-05', 2, 5),
+       ('2022-01-05 00:00:00', 2, false, '2022-01-05 00:00:00', 2, 'Entity', 'Creating entities', 'COMPLETE', '2022-01-05', 2, 5),
+       ('2022-01-05 00:00:00', 3, false, '2022-01-05 00:00:00', 3, 'Dependency Injection', 'Injecting dependencies', 'COMPLETE', '2022-01-05', 3, 6),
+       ('2022-01-05 00:00:00', 3, false, '2022-01-05 00:00:00', 3, '@SpringBootApplication', 'Adding @SpringBootApplication annotation', 'COMPLETE', '2022-01-05', 3, 6),
+       ('2022-01-05 00:00:00', 3, false, '2022-01-05 00:00:00', 3, 'Controller', 'Creating controllers', 'IN_PROGRESS', '2022-01-05', 3, 6),
+       ('2022-01-05 00:00:00', 3, false, '2022-01-05 00:00:00', 3, 'Entity', 'Creating entities', 'COMPLETE', '2022-01-05', 3, 6),
+       ('2022-01-05 00:00:00', 3, false, '2022-01-05 00:00:00', 3, 'Dependency Injection', 'Injecting dependencies', 'COMPLETE', '2022-01-05', 4, 7),
+       ('2022-01-05 00:00:00', 3, false, '2022-01-05 00:00:00', 3, '@SpringBootApplication', 'Adding @SpringBootApplication annotation', 'COMPLETE', '2022-01-05', 4, 7),
+       ('2022-01-05 00:00:00', 3, false, '2022-01-05 00:00:00', 3, 'Controller', 'Creating controllers', 'COMPLETE', '2022-01-05', 4, 7),
+       ('2022-01-05 00:00:00', 3, false, '2022-01-05 00:00:00', 3, 'Entity', 'Creating entities', 'COMPLETE', '2022-01-05', 4, 7);

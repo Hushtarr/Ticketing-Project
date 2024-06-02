@@ -1,8 +1,6 @@
 package com.cydeo.dto;
 import com.cydeo.enums.Status;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
@@ -13,6 +11,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjectDTO {
+    @Setter
+    @Getter
+    private Long id;
 
     @NotBlank
     private String projectName;
