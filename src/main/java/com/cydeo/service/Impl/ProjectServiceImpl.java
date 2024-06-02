@@ -63,6 +63,9 @@ public class ProjectServiceImpl implements ProjectService {
     public void delete(String projectCode) {
         Project project =projectRepository.findByProjectCode(projectCode);
         project.setIsDeleted(true);
+        project.setProjectCode(project.getProjectCode() + "-" + project.getId());  // TODO
+        taskService.deleteByProject(projectMapper.convertToDTO(project));
+
         projectRepository.save(project);
     }
 
@@ -70,12 +73,14 @@ public class ProjectServiceImpl implements ProjectService {
     public void deleteByProjectCode(String projectCode) {
          //projectRepository.deleteByProjectCode(projectCode);
         //this will delete the data from the database
+        //do not touch this part->pure note
     }
 
     @Override
     public void complete(String projectCode) {
         Project project= projectRepository.findByProjectCode(projectCode);
         project.setProjectStatus(Status.COMPLETE);
+        taskService.completeByProject(projectMapper.convertToDTO(project));
         projectRepository.save(project);
 
     }
