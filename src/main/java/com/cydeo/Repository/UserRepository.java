@@ -13,5 +13,5 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Transactional //driver query
     // @Modifying  JPQL or Native query
     void deleteByUserName(String username);
-    List<User> findByRoleDescription(String roleDescription);
+    List<User> findByRoleDescriptionIgnoreCase(String roleDescription);
 }
