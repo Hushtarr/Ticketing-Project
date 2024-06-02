@@ -12,4 +12,7 @@ public interface TaskService {
     void update(TaskDTO dto);
     List<TaskDTO> listAllTasks();
     TaskDTO findById(Long id);
+
+    int totalNonCompletedTasks(String projectCode);
+    int totalCompletedTasks(String projectCode);
 }

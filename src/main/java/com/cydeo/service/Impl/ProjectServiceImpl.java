@@ -9,6 +9,7 @@ import com.cydeo.entity.Project;
 import com.cydeo.enums.Status;
 import com.cydeo.mapper.ProjectMapper;
 import com.cydeo.service.ProjectService;
+import com.cydeo.service.TaskService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +22,14 @@ public class ProjectServiceImpl implements ProjectService {
     private final ProjectMapper projectMapper;
     private final UserService userService;
     private final UserMapper userMapper;
+    private final TaskService taskService;
 
-    public ProjectServiceImpl(ProjectRepository projectRepository, ProjectMapper projectMapper, UserService userService, UserMapper userMapper) {
+    public ProjectServiceImpl(ProjectRepository projectRepository, ProjectMapper projectMapper, UserService userService, UserMapper userMapper, TaskService taskService) {
         this.projectRepository = projectRepository;
         this.projectMapper = projectMapper;
         this.userService = userService;
         this.userMapper = userMapper;
+        this.taskService = taskService;
     }
 
     @Override
@@ -85,8 +88,8 @@ public class ProjectServiceImpl implements ProjectService {
         return list.stream()
                 .map(project -> {
                     ProjectDTO obj=projectMapper.convertToDTO(project);
-                    obj.setCompleteTaskCounts(5);
-                    obj.setUnfinishedTaskCounts(3);
+                    obj.setCompleteTaskCounts(taskService.totalCompletedTasks(project.getProjectCode()));
+                    obj.setUnfinishedTaskCounts(taskService.totalNonCompletedTasks(project.getProjectCode()));
                     return obj;
                 })
                 .collect(Collectors.toList());
