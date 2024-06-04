@@ -21,11 +21,11 @@ public class SecurityConfig {
 
         userList.add(new User("Mike",
                 encoder.encode("abc"),
-                Arrays.asList((new SimpleGrantedAuthority("ROLE_ADMIN")))));
+                List.of((new SimpleGrantedAuthority("ROLE_ADMIN")))));
 
         userList.add(new User("Cena",
                 encoder.encode("def"),
-                Arrays.asList((new SimpleGrantedAuthority("ROLE_MANAGER")))));
+                List.of((new SimpleGrantedAuthority("ROLE_MANAGER")))));
         return new InMemoryUserDetailsManager(userList);
 
     }
