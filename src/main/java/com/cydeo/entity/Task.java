@@ -2,6 +2,7 @@ package com.cydeo.entity;
 
 
 import com.cydeo.enums.Status;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +10,6 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -17,6 +17,8 @@ import java.util.Date;
 @Table(name = "tasks")
 @Getter
 @Setter
+@EqualsAndHashCode
+
 public class Task extends BaseEntity {
 
     private String taskSubject;

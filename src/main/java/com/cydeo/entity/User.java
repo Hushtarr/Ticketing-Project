@@ -1,6 +1,7 @@
 package com.cydeo.entity;
 
 import com.cydeo.enums.Gender;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,8 @@ import javax.persistence.*;
 @Table(name="users")
 @NoArgsConstructor
 @Entity
+@EqualsAndHashCode
+
 //@Where(clause = "is_deleted=false")
 
 public class User extends BaseEntity {

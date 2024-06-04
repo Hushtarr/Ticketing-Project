@@ -12,6 +12,8 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name="roles")
+@EqualsAndHashCode
+
 public class Role extends BaseEntity{
 
     private String description;

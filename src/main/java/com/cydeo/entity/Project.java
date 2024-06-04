@@ -1,10 +1,7 @@
 package com.cydeo.entity;
 
 import com.cydeo.enums.Status;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -16,6 +13,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name="projects")
 @Where(clause = "is_deleted=false")
+@EqualsAndHashCode
+
 public class Project extends BaseEntity{
 
     @Column(unique=true)

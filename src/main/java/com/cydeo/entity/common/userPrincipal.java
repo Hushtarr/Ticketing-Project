@@ -1,18 +1,16 @@
 package com.cydeo.entity.common;
 
 import com.cydeo.entity.User;
-import com.cydeo.service.SecurityService;
-import com.cydeo.service.UserService;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 public class userPrincipal implements UserDetails {
-    private  User user;
+    private final User user;
 
     public userPrincipal(User user) {
         this.user = user;
