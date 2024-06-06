@@ -9,10 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-public class userPrincipal implements UserDetails {
+public class UserPrincipal implements UserDetails {
     private final User user;
 
-    public userPrincipal(User user) {
+    public UserPrincipal(User user) {
         this.user = user;
     }
 
@@ -54,4 +54,7 @@ public class userPrincipal implements UserDetails {
         return this.user.isEnabled();
     } //mapping for spring security
 
+    public Long getId() {
+        return this.user.getId();
+    }
 }
